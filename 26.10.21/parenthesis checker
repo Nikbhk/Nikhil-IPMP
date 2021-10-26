@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool ispar(string x)
+    {stack<char> stack;
+    for(int i=0;i<x.size();i++)
+     { if(x[i]=='{' || x[i]=='[' || x[i]=='(')
+         stack.push(x[i]);
+
+        else {
+               if (stack.empty())
+                     return false;
+
+               else if (x[i]== '}' && stack.top() != '{')
+                 return false;
+
+               else if (x[i]== ']' && stack.top() != '[')
+                 return false;
+
+               else if (x[i]== ')' && stack.top() != '(')
+                 return false;
+
+               else
+               stack.pop();
+           }
+
+     }
+     if(stack.empty())
+        return true;
+
+    else return false;
+    }
+
+int main()
+{string a;
+cout<<"Enter only brackets = ";
+       cin>>a;
+       if(ispar(a))
+        cout<<"\nbalanced\n"<<endl;
+       else
+        cout<<"\nnot balanced\n"<<endl;
+return 0;
+}
