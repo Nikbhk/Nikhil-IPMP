@@ -1,0 +1,85 @@
+/* Given an array of positive integers.
+All numbers occur an even number of times except one number which occurs an odd number of times.
+Find the number in O(n) time & constant space. */
+
+/* We use XOR. When 2 integers are compared using xor, the compiler will perform the operation
+in bits, but the output will be an integer [ O(n) time & constant space O(1) ]  */
+
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+//User function template for C++
+
+class Solution{   
+public:
+    int getOddOccurrence(int arr[], int n) 
+    {// code here
+        int res = 0, i;   
+    for (i = 0; i < n; i++)
+        res ^= arr[i];   //Using bitwise operation XOR to compare 2 numbers i.e ^
+    return res;          //returns the number occuring odd number of times
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int arr[n];
+        for (int i = 0; i < n; i++) 
+        {cin >> arr[i];
+        }
+        Solution ob;
+        auto ans = ob.getOddOccurrence(arr, n);
+        cout << ans << "\n";
+    }
+    return 0;
+}  //  Driver Code Ends
+
+//Another foolproof program done on my own
+
+#include <iostream>
+using namespace std;
+
+// Function to return the only odd
+// occurring element
+int findOdd(int arr[], int n)
+{
+int f=0,l;
+for(int i=0;i<n;i++)
+ {int c=1;
+ if(arr[i]==0)
+   continue;
+   for(int j=i+1;j<n;j++)  //Complexity = O(n^2)
+    { /*if(arr[i]==0)  /*arr[i]==0 and arr[j]==0 will not work (I tested)*/
+    continue;*/
+    if(arr[j]==arr[i])
+       {arr[j]=0;
+        c++;
+       }
+    }
+if(c%2==0)
+    continue;
+else
+  { f=1;
+   l=arr[i];
+   break;
+  }
+ }
+ if(f==0)
+    return 0;
+ else return l;
+}
+
+// Driver Method
+int main(void)
+{
+	int arr[] = { 12, 12, 14, 14, 14, 14 }; 
+	int n = sizeof(arr) / sizeof(arr[0]);
+	cout << "The odd occurring element is "<< findOdd(arr, n); //passing the array
+	return 0;
+}
