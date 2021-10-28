@@ -1,0 +1,66 @@
+/* I AM NOT SURE ABOUT SOLVING THE HACKEREARTH BITWISE PROBLEMS
+
+One fine day, Monk and pudhu decided to play a game to test how diverse their choices are. Both of them choose exactly one integer each. Monk chooses an integer M and Puchi chooses an integer P.
+The diversity of their choices is defined as the number of bits whose status is different in the binary representation of M and P , i.e. , count of bits that are ,either set in M and unset in P or set in P and unset in M.
+Find the answer to their game.
+
+Input:
+First line contains T. T test cases follow.
+Each test case consists of 2 space-separated integers P and M.
+
+Output:
+Print the answer to each test case in a new line.
+
+Constraints:
+1 ≤ T ≤ 104
+0 ≤ M, P ≤ 1016
+
+Sample Input
+4
+1 4
+3 3
+5 1
+8 7
+Sample Output
+2
+0
+1
+4
+Time Limit: 2
+Memory Limit: 256
+Source Limit:
+Explanation
+1 (0001) and 4 (0100) differ in 2 bits.
+The two numbers are identical.
+5 (0101) and 1(0001) differ in 1 bit.
+8 (1000) and 7(0111) differ in 4 bits.
+
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+int t,n;
+cin>>t;
+ for(n=1;n<=t;n++)
+ {
+  long long int m,p;
+  cin>>m>>p;
+  long long int a = m^p;
+  long long int orig = a;
+  long long int count = 0;
+
+while(a>0)
+{
+a = a >> 1 << 1;
+if(orig-a==1)
+count++;
+orig = a >> 1;
+a = orig;
+}
+
+cout<<count<<endl;
+return 0;
+}
