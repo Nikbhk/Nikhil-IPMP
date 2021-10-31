@@ -1,0 +1,124 @@
+/* Given a string, determine if the string has all unique characters. */
+
+/*Soln:1 O(n^2) Brute - Force*/
+
+#include <iostream>
+#include<string>
+using namespace std;
+
+bool x(string s)
+{int i,j,f=0;
+for(i=0;i<s.length()-1;i++)
+ { for(j=i+1;j<s.length();j++)
+  {if (s[i]==s[j])
+   {f=1;
+    return false;
+   }
+  }
+ }
+ if(f==0)
+ return true;
+}
+
+int main()
+{string s;
+cout<<"Please enter a string to check if all it's characters are unique or not\n";
+getline(cin,s);
+if(!x(s))    //checks if condition is false
+    cout<<"Not unique string\n";
+else
+    cout<<"Unique string\n";
+return 0;
+}
+
+
+/* O(nlogn)*/
+
+#include <iostream>
+#include <string>
+#include <algorithm>
+//#include <bits/stdc++.h>
+using namespace std;
+
+bool x(string str)
+{	// Using sorting
+	sort(str.begin(), str.end());
+
+	for (int i = 0; i < str.length()-1; i++)
+    {
+		/*if at any time, 2 adjacent
+		// elements become equal,
+		 return false*/
+     
+		if (str[i] == str[i + 1]) 
+    {	return false;
+		}
+	}
+	return true;
+}
+
+
+int main()   // driver code
+{
+	string str;
+	cout<<"Please enter a string to check if all it's characters are unique or not\n";
+  getline(cin,str);  //getting a string from user
+
+if (x(str))  //checks if condition is true or not by calling the function
+  {		
+  cout << "The String " << str<< " has all unique characters\n";
+	}
+	else {
+
+		cout << "The String " << str
+			<< " has duplicate characters\n";
+	}
+	return 0;
+}
+
+// C++ program to illustrate String with unique
+// characters using set data structure
+#include <bits/stdc++.h>
+using namespace std;
+
+bool uniqueCharacters(string str)
+{
+	set<char> char_set;
+
+	// Inserting character of string into set
+	for(char c : str)
+	{
+		char_set.insert(c);
+	}
+
+	// If length of set is equal to len of string
+	// then it will have unique characters
+	if (char_set.size() == str.size())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+// Driver code
+int main()
+{
+	string str = "GeeksforGeeks";
+
+	if (uniqueCharacters(str))
+	{
+		cout << "The String " << str
+			<< " has all unique characters\n";
+	}
+	else
+	{
+		cout << "The String " << str
+			<< " has duplicate characters\n";
+	}
+	return 0;
+}
+
+// This code is contributed by abhishekjha558498
