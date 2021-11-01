@@ -1,6 +1,6 @@
 /* Given a string, determine if the string has all unique characters. */
 
-/*Soln:1 O(n^2) Brute - Force*/
+/*My Orginal Soln:1 O(n^2) Brute - Force*/
 
 #include <iostream>
 #include<string>
@@ -32,7 +32,7 @@ return 0;
 }
 
 
-/* O(nlogn)*/
+/* O(nlogn) Approach 2*/
 
 #include <iostream>
 #include <string>
@@ -76,8 +76,10 @@ if (x(str))  //checks if condition is true or not by calling the function
 	return 0;
 }
 
+//APPROACH-3 O(nlog(N))
 // C++ program to illustrate String with unique
 // characters using set data structure
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -108,7 +110,7 @@ int main()
 {
 	string str = "GeeksforGeeks";
 
-	if (uniqueCharacters(str))
+	if (uniqueCharacters(str))  //if the condition returned by function is true then it will execute the instructions
 	{
 		cout << "The String " << str
 			<< " has all unique characters\n";
@@ -121,4 +123,104 @@ int main()
 	return 0;
 }
 
-// This code is contributed by abhishekjha558498
+
+//Approach 4
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+const int max_char = 256; //global variable
+
+bool uniqueCharacters(string str)
+{
+/*If length is greater than 265
+(it's supposed to be 0-255 which includes all lowercase, uppercase , and all special characters
+ even numbers are treated as character which has it's own ASCII value
+  but we will be calculating the length of string),
+some characters must have been repeated*/
+	if (str.length() >max_char)
+		return false;
+
+	bool chars[max_char] = { 0 }; //All 256 characters of ASCII are given false value i.e 0 in the 'chars' array
+	for (int i = 0; i < str.length(); i++)
+    {
+		if (chars[int(str[i])] == true)  /* */
+			return false;
+
+		chars[int(str[i])] = true;  /*every ith letter in 'str' is given true value in the 'chars' array
+	which implies we have travelled through that ASCII character already once */
+	}
+	return true;
+}
+
+// driver code
+int main()
+{
+	string str;
+	cout<<"Enter any string ";
+	getline(cin,str);
+
+	if (uniqueCharacters(str)) {
+		cout << "The String " << str
+			<< " has all unique characters\n";
+	}
+	else {
+
+		cout << "The String " << str
+			<< " has duplicate characters\n";
+	}
+	return 0;
+}
+
+
+//Approach 5
+
+// C++ program to illustrate string
+// with unique characters using
+// brute force technique
+#include <bits/stdc++.h>
+using namespace std;
+
+bool uniqueCharacters(string str)
+{
+
+	// Assuming string can have characters
+	// a-z, this has 32 bits set to 0
+	int checker = 0;
+
+	for (int i = 0; i < str.length(); i++) {
+
+		int bitAtIndex = str[i] - 'a';
+
+		// if that bit is already set in
+		// checker, return false
+		if ((checker & (1 << bitAtIndex)) > 0) {
+			return false;
+		}
+
+		// otherwise update and continue by
+		// setting that bit in the checker
+		checker = checker | (1 << bitAtIndex);
+	}
+
+	// no duplicates encountered, return true
+	return true;
+}
+
+// driver code
+int main()
+{
+
+	string str = "geeksforgeeks";
+
+	if (uniqueCharacters(str)) {
+		cout << "The String " << str
+			<< " has all unique characters\n";
+	}
+	else {
+		cout << "The String " << str
+			<< " has duplicate characters\n";
+	}
+	return 0;
+}
+
