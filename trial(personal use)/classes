@@ -1,0 +1,31 @@
+//ojedct can directly mention data members and member functions
+
+#include <iostream>
+using namespace std;
+
+class geeks
+{int id;
+string x;
+
+public:
+    void entry()
+    { cout<<"Enter your name = ";
+    getline(cin,x);
+    cout<<"Enter your id = ";
+    cin>>id;
+    }
+
+void print();
+}s;
+
+void geeks::print()
+{cout<<"Your name is "<<x;
+cout<<"\nYour id is "<<id;
+}
+
+int main()
+{cout<<"Magic of class\n";
+s.entry();
+s.print();
+return 0;
+}
