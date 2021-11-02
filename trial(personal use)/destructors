@@ -1,6 +1,6 @@
 // C++ program to explain destructors
 
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> //APPROACH 1
 using namespace std;
 class Geeks
 {
@@ -28,3 +28,78 @@ int main()
 
 	return 0;
 } // Scope for obj1 ends here
+
+//Destructor is another special member function that is called by the compiler when the scope of the object ends.
+
+// C++ program to explain destructors
+
+#include <bits/stdc++.h> //APPROACH 2
+using namespace std;
+class Geeks
+{
+	public:
+	int id;
+	
+	//Definition for Destructor
+	~Geeks()
+	{
+		cout << "Destructor called for id: " << id <<endl;
+	}
+};
+
+int main()
+{
+	Geeks obj1;
+	obj1.id=7;
+	int i = 0;
+	while ( i < 5 )
+	{
+		Geeks obj2;
+		obj2.id=i;
+		i++;	
+	} // Scope for obj2 ends here
+
+	return 0;
+} // Scope for obj1 ends here
+
+
+OUTPUT
+Destructor called for id: 0
+Destructor called for id: 1
+Destructor called for id: 2
+Destructor called for id: 3
+Destructor called for id: 4
+Destructor called for id: 7
+
+
+#include <bits/stdc++.h>  //APPROACH 3
+using namespace std;
+class Geeks
+{
+	public:
+	int id;
+
+	//Definition for Destructor
+	~Geeks()
+	{
+		cout << "Destructor called for id: " << id <<endl;
+	}
+};
+
+int main()
+{
+	Geeks obj1;
+	obj1.id=7;
+
+		Geeks obj2;
+		obj2.id=9;
+		obj2.id++;
+	 // Scope for obj2 ends here, hence destructor is called
+
+	return 0;
+} // Scope for obj1 ends here, hence destructor is called
+
+
+OUTPUT
+Destructor called for id: 10
+Destructor called for id: 7
