@@ -1,0 +1,89 @@
+#include <bits/stdc++.h>  //MY FIRST ATTEMPT
+using namespace std;
+
+void x(string s)
+{ int n=s.length();
+int f=0;
+if(n%2==0)
+  {for(int i=0;i<n;i++)  //i<n/2
+    { for(int j=i+1;j<n;j++)
+      {if(s[i]==s[j])
+        f++;
+      }
+    }
+  }
+  else
+    {for(int i=0;i<n;i++) //i<n/2
+    { for(int j=i+1;j<n;j++)
+      {if(s[i]==s[j])
+        f++;
+      }
+    }
+    }
+if(f==n/2)
+    cout<<"Yes\n";
+else cout<<"No\n";
+}
+
+int main()
+{string s;
+cout<<"Enter any string for pallindrome permutation = ";
+getline(cin,s);
+x(s);
+return 0;
+}
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void x(string s)
+{ int n=s.length();
+int k=0,f=0;
+
+for(int i=0;i<n;i++)  //THIS LOOPS ARE FOR SINGLE ALPHABET STRINGS,THEY ARE ALWAYS PALLINDROME HOWEVER U REARRANGE IT
+    { for(int j=i+1;j<n;j++)
+      {if(s[i]==s[j])
+        {k++;}
+      }
+   break;
+}
+
+if(k==n-1)
+ cout<<"Yes, pallindrome permutation\n";
+
+ else      //TO CHECK FOR OTHER PEMUTATION PALLINDROME STRINGS LIKE TACOCAT, MALAYALAM, MIMIM ETC
+{
+if(n%2==0)
+  {for(int i=0;i<n;i++)        //EACH CHARACTER IS COMPARED INDIVIDUALLY TO OTHER CHARACTERS IN THE SAME STRING 
+    { for(int j=i+1;j<n;j++)  
+      {if(s[i]==s[j])     
+        {f++;break;}           /*WHEN THE ith character finds the same charachter in another index it counts and then break the inner loop
+                                 and proceed to the next index character and again does the same process*/       
+      }
+    }
+  }
+  else
+   { for(int i=0;i<n;i++) //i<n/2
+    { for(int j=i+1;j<n;j++)
+      {if(s[i]==s[j])
+        {f++;break;}
+      }
+    }
+   }
+if(((2*f)==n+1)&& (n%2!=0))//if(f+1==(n/2)+1)
+    cout<<"Yes\n";
+else if((2*f==n)&& (n%2==0))
+    cout<<"Yes\n";
+else cout<<"No\n";
+}
+}
+
+int main()
+{string s;
+cout<<"Enter any string for pallindrome permutation = ";
+getline(cin,s);
+x(s);
+return 0;
+}
