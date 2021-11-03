@@ -1,0 +1,61 @@
+/*NOTE: I DIDDN'T ADD ARGUEMENT Node *head before, I believe this was the mistake done
+*/
+
+#include <iostream>
+#include "linklist.h"
+#include<conio.h>
+
+using namespace std;
+
+void middle(int r,Node *head)    //FINDING THE LINKED LIST
+{Linkedlist p1;
+Node *p=head;
+int i=1;
+if(r%2==0)
+{while(i<r/2)
+ { p=p->next;
+   i++;
+ }
+cout<<"\n\nThe middle element =  "<<p->data;
+}
+else if(r%2!=0)
+{ while(i<=r/2)
+    {p=p->next;
+      i++;
+    }
+  cout<<"\n\nThe middle element =  "<<p->data;
+}
+}
+
+void printReverse(Node* head)      //REVERSING THE WHOLE LINKED LIST
+{
+    // Base case
+    if (head == NULL)
+    return;
+
+    // print the list after head node
+    printReverse(head->next);
+
+    // After everything else is printed, print head
+    cout << head->data << " ";
+}
+
+int main()
+{Linkedlist s;
+s.insertNode(2);
+s.insertNode(4);
+s.insertNode(6);
+s.insertNode(8);
+s.insertNode(10);
+s.printList();
+int r=s.length();
+cout<<"\n\nLength of the given linked list = "<<r;
+cout<<"\n\n";
+s.searching(8);
+cout<<"\n\n";
+s.searching(5);
+printReverse(s.head);
+middle(r,s.head);
+getch();
+return 0;
+}
