@@ -1,3 +1,19 @@
+/* Default constructor  :   Linkedlist() { head = NULL; }
+
+	// Function to insert a
+	// node at the end of the
+	// linked list.
+	void insertNode(int);
+
+	// Function to print the
+	// linked list.
+	void printList();
+
+	// Function to delete the
+	// node at given position
+	void deleteNode(int);
+*/
+
 // C++ program for the above approach
 #include <iostream>
 using namespace std;
