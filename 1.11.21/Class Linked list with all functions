@@ -21,8 +21,8 @@
 
 
 // C++ program for the above approach
-//#include <iostream>
-//using namespace std;
+#include <iostream>
+using namespace std;
 
 // Node class to represent
 // a node of the linked list.
