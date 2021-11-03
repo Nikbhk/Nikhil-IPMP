@@ -16,25 +16,9 @@
 	// node at given position
 	void deleteNode(int);
 	
-	void searching(int) and length() 
+	void searching(int) and int length() 
 */
 
-using namespace std;
-/* Default constructor  :   Linkedlist() { head = NULL; }
-
-	// Function to insert a
-	// node at the end of the
-	// linked list.
-	void insertNode(int);
-
-	// Function to print the
-	// linked list.
-	void printList();
-
-	// Function to delete the
-	// node at given position
-	void deleteNode(int);
-*/
 
 // C++ program for the above approach
 //#include <iostream>
@@ -84,7 +68,7 @@ public:
 	// node at given position
 	void deleteNode(int);
      void searching(int);
-	void length();
+	int length();
 };
 
 // Function to delete the
@@ -107,13 +91,13 @@ if(r>0)
 else cout<<" "<<x<<" is unavailable\n";
 }
 
-void Linkedlist::length()     //LENGTH
+int Linkedlist::length()     //LENGTH
 {int len=0;
 Node *temp1=head;
 	if (head == NULL)
     {
 		cout << "List empty." << endl;
-		return;
+		return 0;
 	}
 
 	// Find length of the linked-list.
@@ -121,7 +105,7 @@ Node *temp1=head;
     {   temp1 = temp1->next;
         len++;
 	}
-	cout<<"Length of given linked list = "<<len;
+	return len;
 }
 
 void Linkedlist::deleteNode(int nodeOffset)   //DELETION
