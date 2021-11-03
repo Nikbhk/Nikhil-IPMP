@@ -174,3 +174,15 @@ void Linkedlist::printList()
 	return 0;
 }
 */
+
+
+/*After creating header file 
+
+#ifndef LINKED_LIST_H_INCLUDED
+#define LINKED_LIST_H_INCLUDED
+
+
+
+#endif // LINKED_LIST_H_INCLUDED
+
+*/
