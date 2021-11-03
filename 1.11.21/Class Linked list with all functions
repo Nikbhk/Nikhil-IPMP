@@ -1,3 +1,6 @@
+#ifndef LINKED_LIST_H_INCLUDED
+#define LINKED_LIST_H_INCLUDED
+
 /* Default constructor  :   Linkedlist() { head = NULL; }
 
 	// Function to insert a
@@ -12,11 +15,13 @@
 	// Function to delete the
 	// node at given position
 	void deleteNode(int);
+	
+	void searching(int) and length() 
 */
 
 // C++ program for the above approach
-#include <iostream>
-using namespace std;
+//#include <iostream>
+//using namespace std;
 
 // Node class to represent
 // a node of the linked list.
@@ -61,11 +66,47 @@ public:
 	// Function to delete the
 	// node at given position
 	void deleteNode(int);
+     void searching(int)
+	void length();
 };
 
 // Function to delete the
 // node at given position
-void Linkedlist::deleteNode(int nodeOffset)
+
+void Linkedlist::searching(int x) //Iterative search
+{ int r;
+    Linkedlist* current = head; // Initialize current
+    while (current != NULL)
+    {
+        if (current->key == x)
+            {r++;     //increasing value of r
+            break;
+            }
+        current = current->next;
+    }
+if(r>0)
+    cout<<" "<<x<<" is available\n";
+else cout<<" "<<x<<" is unavailable\n";
+}
+
+void Linkedlist::length()     //LENGTH
+{int len=0;
+
+	if (head == NULL)
+    {
+		cout << "List empty." << endl;
+		return;
+	}
+
+	// Find length of the linked-list.
+	while (temp1 != NULL)
+    {   temp1 = temp1->next;
+        len++;
+	}
+	cout<<"Length of given linked list = "<<len;
+}
+
+void Linkedlist::deleteNode(int nodeOffset)   //DELETION
 {
 	Node *temp1 = head, *temp2 = NULL;
 	int ListLen = 0;
@@ -122,10 +163,11 @@ void Linkedlist::deleteNode(int nodeOffset)
 }
 
 // Function to insert a new node.
-void Linkedlist::insertNode(int data)
+void Linkedlist::insertNode(int data)   //INSERTION
 {
 	// Create the new Node.
-	Node* newNode = new Node(data);
+	Node* newNode = new Node(data);/*struct Node *temp;
+	                                 temp=(struct Node*)malloc(sizeof(struct Node))    */
 
 	// Assign to head
 	if (head == NULL) {
@@ -147,7 +189,7 @@ void Linkedlist::insertNode(int data)
 
 // Function to print the
 // nodes of the linked list.
-void Linkedlist::printList()
+void Linkedlist::printList()       //DISPLAY
 {
 	Node* temp = head;
 
@@ -192,7 +234,7 @@ void Linkedlist::printList()
 */
 
 
-/*After creating header file 
+/*After creating header file
 
 #ifndef LINKED_LIST_H_INCLUDED
 #define LINKED_LIST_H_INCLUDED
@@ -202,3 +244,5 @@ void Linkedlist::printList()
 #endif // LINKED_LIST_H_INCLUDED
 
 */
+
+#endif // LINKED_LIST_H_INCLUDED
