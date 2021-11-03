@@ -149,7 +149,7 @@ void Linkedlist::printList()
 }
 
 // Driver Code
-int main()
+/*int main()
 {
 	Linkedlist list;
 
@@ -173,3 +173,4 @@ int main()
 	cout << endl;
 	return 0;
 }
+*/
