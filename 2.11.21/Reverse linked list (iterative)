@@ -1,0 +1,62 @@
+#include <iostream>
+#include<conio.h>
+using namespace std;
+
+struct node
+{int data;
+node *link;
+}*head;
+
+ void push(int data)
+    {
+        node* temp = new node;
+        temp->data=data;
+        temp->link = head;
+        head = temp;
+    }
+
+ void rev()
+    {
+        // Initialize current, previous and
+        // next pointers
+    node* cur= head;
+    node *prev = NULL, *next = NULL;
+
+    while (cur != NULL)
+    {
+    // Store next
+    next = cur->link;
+
+    // Reverse current node's pointer
+    cur->link = prev;
+    // Move pointers one position ahead.
+    prev = cur;
+    cur= next;
+    }
+    head = prev;
+}
+
+    /* Function to print linked list */
+    void print()
+    {
+        node* temp = head;
+        while (temp != NULL) {
+            cout << temp->data << " ";
+            temp = temp->link;
+        }
+    }
+
+int main()
+{push(1);
+push(2);
+push(3);
+push(4);
+push(5);
+cout<<"Original linked list entered = ";
+print();
+rev();
+cout<<"\nReverse linked list = ";
+print();
+getch();
+return 0;
+}
