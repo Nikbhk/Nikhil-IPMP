@@ -1,0 +1,66 @@
+//  C++ program to find n'th node from end
+#include <iostream>
+#include<conio.h>
+using namespace std;
+
+/* Link list node */
+struct node
+{
+	int data;
+	node *next;
+}*head;
+
+/* Function to get the nth node from the last of a linked list*/
+void nth_node_from_Last(int n)
+{  // n=nth node
+	int len = 0, i;
+    node *temp = head;
+
+	// count the number of nodes in Linked List
+	while (temp != NULL)
+    {  len++;
+        temp = temp->next;
+	}
+
+	// check if value of n is not
+	// more than length of the linked list
+	if (len < n)
+		return;
+
+	temp = head;
+
+	// get the (len-n+1)th node from the beginning
+	for (i = 1; i < len - n + 1; i++)  // if len=6 , n=4 from end of linked list then,
+		temp = temp->next;             // 6-4+1 = 7 , upto 7th node, where 7th node is not considered
+
+	cout <<"n-th node from last = " <<temp->data;
+}
+
+void push(int new_data)
+{
+	// allocate node
+	node *new_node = new node;
+
+	// put in the data
+	new_node->data = new_data;
+
+	// link the old list off the new node
+	new_node->next = head;
+
+	// move the head to point to the new node
+	head = new_node;
+}
+
+// Driver Code
+int main()
+{	// create linked 98->67->35->15->4->20
+	push(32);
+	push(20);
+	push(4);
+	push(15);
+	push(35);
+    push(67);
+    push(98);
+nth_node_from_Last(4); //n=4
+	return 0;
+}
