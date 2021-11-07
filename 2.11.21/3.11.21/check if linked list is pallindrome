@@ -1,0 +1,85 @@
+#include<conio.h>
+#include<iostream>
+#include<stack>
+using namespace std;
+
+struct node
+{ int data;
+node *ptr;
+}*head;
+
+void create(int data)
+{ /*if(head==NULL)
+  {head->data=data;  //This insertion code in this comments won't work when u add > 2 nodes
+   head->ptr=NULL;   //To resolve this issue u must've a 3rd node like temp1 to create node,temp->ptr=temp1
+  }
+node *temp=new node;
+ temp->data=data;
+ temp->ptr=NULL;
+ head->ptr=temp;
+ head=temp;
+*/
+ node* temp = new node;  //this'll 
+        temp->data=data;
+        temp->ptr = head;
+        head = temp;
+}
+
+// Function to check if the linked list
+// is palindrome or not
+bool isPalin()
+{		// Temp pointer
+		node* slow= head;
+
+		// Declare a stack
+		stack <int> s;
+
+
+		// Push all elements of the list
+		// to the stack
+		while(slow != NULL){
+				s.push(slow->data);
+
+				// Move ahead
+				slow = slow->ptr;
+		}
+
+		// Iterate in the list again and
+		// check by popping from the stack
+		while(head != NULL ){
+
+			// Get the top most element
+			int i=s.top();
+
+			// Pop the element
+			s.pop();
+
+			// Check if data is not
+			// same as popped element
+			if(head -> data != i){
+				return false;
+			}
+
+			// Move ahead
+		head=head->ptr;
+		}
+
+return true;
+}
+
+// Driver Code
+int main()
+{  create(1);
+create(2);
+create(3);
+create(3);
+create(2);
+create(1);
+
+	if(isPalin())
+			cout<<"isPalindrome is true\n";
+	else
+		cout<<"isPalindrome is false\n";
+getch();
+return 0;
+}
