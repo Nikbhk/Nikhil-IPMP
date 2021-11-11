@@ -1,0 +1,30 @@
+//DONE ON MY OWN
+
+#include<iostream>
+using namespace std;
+
+//Complexity = O(n^2)
+int main()
+{int i,j,n, a[10];
+cout<<"Enter number of elements for sorting = ";
+cin>>n;
+cout<<"Enter the array\n";
+for(i=0;i<n;i++)
+    cin>>a[i];
+for(i=0;i<n-1;i++) //n-1 = max number of passes
+{for(j=0;j<n-1;j++)
+/*if there are 10 elements we should compare
+ upto 8th and 9th(< n-1) elements since index starts from 0*/
+ {if(a[j]>a[j+1])
+  {int t=a[j];
+    a[j]=a[j+1];
+    a[j+1]=t;
+  }
+ }
+}
+
+cout<<"\nThe bubble sorted array \n";
+for(i=0;i<n;i++)
+    cout<<a[i]<<" ";
+return 0;
+}
