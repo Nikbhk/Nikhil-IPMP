@@ -1,0 +1,44 @@
+#include <iostream>
+//selection sort in O(n*2)
+using namespace std;
+
+int main()
+{ int n,a[10];
+
+cout<<"Enter the size of array = ";
+cin>>n;
+
+cout<<"Enter the elements of array\n";
+for(int i=0;i<n;i++)
+    cin>>a[i];
+
+for(int i=0;i<n-1;i++)
+ { //stores the ith element in m and the position of current ith element(which is i) in pos
+    int m=a[i];
+   int pos=i;
+
+for(int j=i+1;j<n;j++)
+ 
+ /*m and pos are equally important, m stores the least element of the array after the ith element
+  as we are sorting the array in the ascending order and pos stores the position of the least element
+ This is the whole point of j loop */
+  {if(m>a[j])
+   {m=a[j];
+    pos=j;
+   }
+  }
+  
+  /*the position of the least element is swapped with the current ith element
+  and the ith element is swapped with m since m stores the least element*/
+   a[pos]=a[i];
+  a[i]=m;
+   /*Do not interchange the above 2 steps 
+   else the least element'll occupy in all positions of sorted array except last one(since i=j+1)
+   */
+}
+
+cout<<"\nSorted List is \n";
+for(int i=0;i<n;i++)
+    cout<<a[i]<<" ";
+return 0;
+}
