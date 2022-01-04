@@ -1,0 +1,93 @@
+/*In quicksort, we first take the last element of the original array and bring that to the right position
+(where all the elements lesser than the last element will be before the last element and all elements more than the last element'll be after
+  the index of the correct position(i.e after the last element). After this we get 2 unsorted arrays which is sorted in the similar manner)
+ */
+
+#include <iostream>
+
+using namespace std;
+
+int breakdown(int arr[],int low,int high)//breakdown = partition
+{int i=low-1;
+for(int j=low;j<high;j++)
+    /*Instead of putting int i=-1 or int j=0 initially we put int i=low-1 and int j=low since
+    we also have the last two quicksort functions to sort for(one of them is the sorting of the unsorted array which has elements greater than pivot element)
+    Putting i=low-1 and j=low for this array won't help*/
+  {if(arr[j]<arr[high])
+      {i++;
+       int t=arr[i];
+       arr[i]=arr[j];
+       arr[j]=t;
+      }
+  }
+
+int t=arr[i+1];  //for swapping the last element of unsorted array to the correct position after doing the above steps
+arr[i+1]=arr[high];
+arr[high]=t;
+
+return i+1;
+}
+
+void quicksort(int arr[],int low, int high)  //high is the last element of the all unsorted arrays in quicksort algo
+{if(low<high)
+/*else the array is sorted now,remember there are 2 arrays(one is lesser than pivot and other is greater than pivot element) to sort */
+{int pivot=breakdown(arr,low,high); //pivot is taken as the last index of any/all unsorted arrays in quicksort algo
+ quicksort(arr,low,pivot-1);  //low is taken as the first index of any/all unsorted arrays in quicksort algo
+ quicksort(arr,pivot+1,high);
+//instead of breakdown(arr, pi+1,high), we do the above step to check if low<high, similarly for 2nd last step of this function
+//This breakdown() actually does the partition
+}
+}
+
+void disp(int arr[],int n)
+{cout<<"\n\nThe sorted array using quicksort is\n";
+    for(int i=0;i<n;i++)
+ cout<<arr[i]<<" ";
+}
+
+int main()
+{int arr[]={10,80,30,90,40,50,70};
+cout<<"The given array is\n";
+int n=sizeof(arr)/sizeof(arr[0]);
+for(int i=0;i<n;i++)
+    cout<<arr[i]<<" ";
+quicksort(arr,0,n-1);
+disp(arr,n);
+    return 0;
+}
+
+
+//NOTE - PERSONAL REFERENCE
+
+/*void swap(int* a, int* b) 
+{ 
+    int t = *a; 
+    *a = *b; 
+    *b = t; 
+} 
+  
+/* This function takes last element as pivot, places 
+the pivot element at its correct position in sorted 
+array, and places all smaller (smaller than pivot) 
+to left of pivot and all greater elements to right 
+of pivot */
+int partition (int arr[], int low, int high) 
+{ 
+    int pivot = arr[high]; // pivot 
+    int i = (low - 1); // Index of smaller element and indicates the right position of pivot found so far
+  
+    for (int j = low; j <= high - 1; j++) 
+    { 
+        // If current element is smaller than the pivot 
+        if (arr[j] < pivot) 
+        { 
+            i++; // increment index of smaller element 
+            swap(&arr[i], &arr[j]); 
+        } 
+    } 
+    swap(&arr[i + 1], &arr[high]); 
+		/* We are passing address of array to the swap() so that whatever swapping of the elements are done in swap(), the same elements'll be swapped also int e 
+		the array as well(this is basically call by reference!!)*/
+		return (i + 1); 
+}
+*/
