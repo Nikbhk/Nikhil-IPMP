@@ -1,0 +1,47 @@
+/*  Given an unsorted array of nonnegative integers, find a continuous subarray which adds to a given number. 
+Examples : 
+
+Input: arr[] = {1, 4, 20, 3, 10, 5}, sum = 33
+Output: Sum found between indexes 2 and 4
+Sum of elements between indices
+2 and 4 is 20 + 3 + 10 = 33
+
+*/
+
+#include<iostream>
+
+using namespace std;
+
+//O(n^2) time
+
+int main()
+{int flag=0,sum1,i,j,n,a[10];
+cout<<"Enter no. of elements in array = ";
+cin>>n;
+cout<<"Enter elements to find subarray equal to the sum\n";
+
+for(i=0;i<n;i++)
+cin>>a[i];
+
+cout<<"Enter the sum to find the subarray = ";
+cin>>sum1;
+
+for(i=0;i<n;i++)
+ { int sum=0;
+   for(j=i;j<n;j++)
+    {sum+=a[j];
+     if(sum==sum1)
+      {cout<<"Sum found at subarray between "<<i<<" and "<<j<<endl;
+       cout<<"Sum of elements between indices\n";
+       for(int k=i;k<=j;k++)
+       cout<<a[k]<<"+";
+       cout<<"\b = "<<sum<<endl;
+       flag++;
+       exit(0);
+      }
+   }
+ }
+if(flag==0)
+    cout<<"No subarray found\n";
+return 0;
+}
