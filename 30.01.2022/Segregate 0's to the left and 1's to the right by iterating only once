@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{int a[10],n,i,c=0;
+cout<<"Enter no. of elements in array = ";
+cin>>n;
+
+cout<<"\nEnter elements containing only 0's and 1's\n";
+for(i=0;i<n;i++)
+{ cin>>a[i];
+if(a[i]==0)
+ c++;
+}
+
+for(i=0;i<n;i++)
+{if(c>0)
+ {a[i]=0;
+  c--;
+ }
+ else
+    a[i]=1;
+}
+cout<<"\nHere's the array segregating 0's to the left side and 1's to the right side\n";
+for(i=0;i<n;i++)
+    cout<<a[i]<<" ";
+return 0;
+}
+ 
+ //O(n) time. I did by counting the 'c' no. of 0's in original array and and putting 0 upto c and rest of the remaining elements'll be 1 for the original array 
