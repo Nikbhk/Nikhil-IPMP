@@ -1,0 +1,42 @@
+//ONLY RECURSION WORKS, I TRIED THE PREORDE TREE TRAVERSAL BUT DIDN'T WORK
+
+#include<iostream>
+
+using namespace std;
+
+struct node
+{int data;
+node *left;
+node *right;
+};
+
+node* create_node(int data)
+{node *Node=new node();
+Node->data=data;
+Node->left=NULL;
+Node->right=NULL;
+return Node;
+}
+
+int count_leaf(node *root)
+{ if(root==NULL) //if the entire tree is empty
+   return 0;
+
+else if(root->left==NULL && root->right==NULL)  //this means we encountered a leaf node
+    return 1;
+
+else
+  return  count_leaf(root->left) + count_leaf(root->right); //we traverse thru the whole tree
+
+
+}
+
+int main()
+{node *root=create_node(1);
+root->left=create_node(2);
+root->right=create_node(4);
+root->left->left=create_node(10);
+root->left->right=create_node(12);
+cout<<"No. of leaves in the given binary tree = "<<count_leaf(root);
+return 0;
+}
