@@ -37,6 +37,7 @@ root->left=create_node(2);
 root->right=create_node(4);
 root->left->left=create_node(10);
 root->left->right=create_node(12);
-cout<<"No. of leaves in the given binary tree = "<<count_leaf(root);
+int count=count_leaf(root);                 //FOR MY REFERENCE IN code::blocks
+cout<<"No. of leaves in the given binary tree = "<<count;
 return 0;
 }
