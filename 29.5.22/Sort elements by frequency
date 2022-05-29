@@ -1,0 +1,41 @@
+/*
+Print the elements of an array in the decreasing frequency if 2 numbers have same frequency then print the one which came first. 
+
+Examples:  
+
+Input:  arr[] = {2, 5, 2, 8, 5, 6, 8, 8}
+Output: arr[] = {8, 8, 8, 2, 2, 5, 5, 6}
+
+Input: arr[] = {2, 5, 2, 6, -1, 9999999, 5, 8, 8, 8}
+Output: arr[] = {8, 8, 8, 2, 2, 5, 5, 6, -1, 9999999}
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ /* Allocate memory for temporary
+arrays left[] and right[] 
+    int* left = new int[sizeof(int) * n];
+    int* right = new int[sizeof(int) * n]
+    int left[0];
+*/
+{int a[]={10,3,5,6,2};
+int i,j,n=sizeof(a)/sizeof(a[0]);
+int prefix[n],suffix[n];
+for(i=0;i<n;i++)
+{prefix[i]=1;
+ suffix[i]=1;
+}
+ for(i=0;i<n;i++)
+ {for(j=0;j<i;j++)
+  prefix[i]*=a[j];
+  for(j=i+1;j<n;j++)
+    suffix[i]*=a[j];
+ }
+
+ for(i=0;i<n;i++)
+    a[i]=prefix[i]*suffix[i];
+ for(i=0;i<n;i++)
+    cout<<a[i]<<" ";
+return 0;
+}
